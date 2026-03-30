@@ -92,11 +92,11 @@ class AmazonETL:
             orphans = tables['fact_sales'][~tables['fact_sales']['user_id'].isin(tables['dim_user']['user_id'])]
             missing_prods = tables['fact_sales'][~tables['fact_sales']['product_id'].isin(tables['dim_product']['product_id'])]
             null_prices = tables['fact_sales']['price_after_discount'].isnull().sum()
-            
+
             print(f"Orphaned Users: {len(orphans)}")
             print(f"Missing Products in Fact: {len(missing_prods)}")
             print(f"Null Prices found: {null_prices}")
-            
+
             status = "Success" if (len(orphans) + len(missing_prods) + null_prices) == 0 else "Warning"
             self.log_step("Quality Check", status)
         except Exception as e:
@@ -126,6 +126,6 @@ class AmazonETL:
             print("\n--- FINAL LOG SUMMARY ---")
             print(log_df[['step', 'status', 'row_count']])
 
-# --- EXECUTION (This runs inside the notebook AND is saved to the file) ---
+# EXECUTION
 etl = AmazonETL("data/mrr/amazon.csv")
 tables = etl.run_pipeline()
