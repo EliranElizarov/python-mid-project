@@ -1,0 +1,11 @@
+step,timestamp,status,row_count,error
+Extract MRR,2026-03-30 13:14:32,Success,1465,None
+Transform: dim_product,2026-03-30 13:14:32,Success,1351,None
+Transform: dim_user,2026-03-30 13:14:32,Success,9050,None
+Transform: fact_sales,2026-03-30 13:14:32,Success,11503,None
+Transform: fact_review,2026-03-30 13:14:32,Success,11503,None
+Quality Check,2026-03-30 13:14:32,Success,0,None
+Load dim_product,2026-03-30 13:14:32,Success,1351,None
+Load dim_user,2026-03-30 13:14:32,Success,9050,None
+Load fact_sales,2026-03-30 13:14:33,Success,11503,None
+Load fact_review,2026-03-30 13:14:33,Success,11503,None
